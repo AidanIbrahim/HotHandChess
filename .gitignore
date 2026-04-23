@@ -1,0 +1,24 @@
+# Build results
+bin/
+obj/
+
+# Visual Studio cache
+.vs/
+
+#Hide these for now
+tools/
+
+# User-specific files
+*.user
+*.suo
+
+# Logs
+*.log
+
+# NuGet
+packages/
+*.nupkg
+
+# Others
+*.cache
+*.tmp
