@@ -1,6 +1,6 @@
-# HotHandEngine
+# HotHandChess
 
-HotHandEngine is a chess engine developed by HotHand Systems as a learning and research project. The goal is to document the full process of building a chess engine—from early design decisions to implementation details—while applying solid software engineering practices. The engine is written in C# and is intended for experimentation, education, and continuous improvement.
+HotHandChess is a chess engine developed by HotHand Systems as a learning and research project. The goal is to document the full process of building a chess engine—from early design decisions to implementation details—while applying solid software engineering practices. The engine is written in C# and is intended for experimentation, education, and continuous improvement.
 
 If you're interested in how the engine works internally, the full system design document is available below.
 
