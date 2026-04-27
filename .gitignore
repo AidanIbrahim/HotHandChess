@@ -6,7 +6,7 @@ obj/
 .vs/
 
 #Hide these for now
-tools/
+HotHandEngine/tools/
 
 # User-specific files
 *.user
