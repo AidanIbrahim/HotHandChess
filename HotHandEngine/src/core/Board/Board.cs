@@ -11,21 +11,34 @@ namespace Chess.Core
 		public const int whiteIndex = 0;
 		public const int blackIndex = 1;
 
+		//Array that stores piece codes, indexed by square. Little Endian, index 0 is a1, index 63 is h8.
+		public int[] chessboard;
 
-		//BitBoards for each piece of each color. Indexing is as follows:
-		//0-5: White Pawn, Knight, Bishop, Rook, Queen, King
-		//6-11: Black Pawn, Knight, Bishop, Rook, Queen, King
-		//Formula for accessing: (colorIndex * 6) + pieceTypeIndex
-		public ulong[] pieceBitBoards;
+
+        //BitBoards for each piece of each color. Indexing is as follows:
+        //0-5: White Pawn, Knight, Bishop, Rook, Queen, King
+        //6-11: Black Pawn, Knight, Bishop, Rook, Queen, King
+        //Formula for accessing: (colorIndex * 6) + pieceTypeIndex
+        public ulong[] pieceBitBoards;
 
 		//BitBoards for all pieces of each color. 
-		public ulong[] colorBitBoards;
+		public ulong[] colorBitboards;
+		public ulong allPiecesBitboard;
 
 
+		public isWhiteTurn;
 
 
+		//Function definitions start here.
 
-	}
+		//Creates a new board
+		public Board()
+		{
+			chessboard = new int[64];
+		}
+		
+
+    }
 
 
 

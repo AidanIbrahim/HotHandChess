@@ -43,9 +43,30 @@ namespace Chess.Core
         public const int PIECE_INDEX_MIN = WHITE_PAWN; // Used for iterating, should be set to the lowest piece code.
 
         //Function definitions start here.
-        public static int symbolToPieceType(char pieceSymbol)
+
+        //Converts alphabetical characters to integer piece codes. Lowercase are black pieces, and uppercase are white pieces
+        public static int symbolToPieceCode(char pieceSymbol)
         {
-            char pieceSymbol = 
+            int pieceCode = pieceSymbol switch
+            {
+                'p' => BLACK_PAWN,
+                'r' => BLACK_ROOK,
+                'n' => BLACK_KNIGHT,
+                'b' => BLACK_BISHOP,
+                'q' => BLACK_QUEEN,
+                'k' => BLACK_KING,
+
+                'P' => WHITE_PAWN,
+                'R' => WHITE_ROOK,
+                'N' => WHITE_KNIGHT,
+                'B' => WHITE_BISHOP,
+                'Q' => WHITE_QUEEN,
+                'K' => WHITE_KING,
+
+                _ => NONE
+
+            };
+            return pieceCode;
         }
 
         public static char getPieceSymbol(int pieceCode)
@@ -71,7 +92,7 @@ namespace Chess.Core
         public static int isBlack(int pieceType)
         {
             if (pieceType == NONE) return NONE;
-            return pieceType / NUM_PIECE_TYPES; //int division will return 0 if the id is lower than 5, but 1 if it is higher than 6
+            return pieceType / NUM_PIECE_TYPES; //Int division will return 0 if the id is lower than 5, but 1 if it is higher than 6
         }
     }
 
