@@ -1,0 +1,12 @@
+uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+position startpos
+
+uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+position startpos
+d

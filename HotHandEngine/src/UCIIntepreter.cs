@@ -11,6 +11,7 @@ public class UCIIntepreter
     string logPath = "logs"; //Path to the log file
     string logFileName = "UCI_Log.txt";
     string engineName = "HotHandEngine"; //The name of the engine that is being run
+    Engine chessEngine = new Engine();
     
 
     //Function definitions start here
@@ -37,10 +38,11 @@ public class UCIIntepreter
                 //IMPLEMENT ENGINE CLASS
                 break;
             case "position":
-                //IMPLEMENT ENGINE CLASS
+                chessEngine.loadPosition(message);
                 break;
             case "go":
                 writeToConsole("bestmove d7d5");
+                //HARDCODED AS A TEST - FIX LATER
                 break;
             case "stop":
                 //IMPLEMENT ENGINE CLASS
@@ -49,7 +51,7 @@ public class UCIIntepreter
                 //IMPLEMENT ENGINE CLASS
                 break;
             case "d":
-                //IMPLEMENT ENGINE CLASS
+                chessEngine.printPosition();
                 break;
             default:
                 writeToLog($"Bad Command: {messageType}");

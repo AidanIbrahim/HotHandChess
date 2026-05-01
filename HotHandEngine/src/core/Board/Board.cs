@@ -12,7 +12,7 @@ namespace Chess.Core
 		public const int blackIndex = 1;
 
 		//Array that stores piece codes, indexed by square. Little Endian, index 0 is a1, index 63 is h8.
-		public int[] chessboard;
+		public int[] chessboard = new int[64];
 
 
         //BitBoards for each piece of each color. Indexing is as follows:
@@ -25,30 +25,60 @@ namespace Chess.Core
 		public ulong[] colorBitboards = new ulong[2];
 		public ulong allPiecesBitboard;
 
-		public int isWhiteTurn = 1;
+		//Constants
+		const string fenStartpos = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
+        //Function definitions start here.
 
-		//Function definitions start here.
-
-		//Creates a new board
-		public Board()
+        //Creates a new board
+        public Board()
 		{
-			chessboard = new int[64];
-			//Load up all the values to their defaults
+			for (int board = 0; board < colorBitboards.Length; board++)
+			{
+				colorBitboards[board] = 0; //Initialize color bitboards
+			}
+			for (int board = 0; board < pieceBitBoards.Length; board++)
+			{
+				pieceBitBoards[board] = 0; //Initialize piece bitboards
+			}
+			allPiecesBitboard = 0;
 		}
 
-		//Updates the chessboard representation, and then updates the bitboards
-		public void parseFenToChessboard()
+        //    rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+        public void parseFenToChessboard(string position)
+		{
+			if (position == "startpos")
+			{
+				position = fenStartpos;
+
+            }
+
+
+
+			return;
+		}
+
+        //Updates the chessboard representation, and then updates the bitboards
+
+        public void updateBitboardsFromChessboard()
 		{
 
 			return;
 		}
 
-		public void updateBitboardsFromChessboard()
+		public void printDebug()
 		{
-
-			return;
+			for (int rank = 7; rank >= 0; rank--)
+			{
+				for (int file = 0; file < 8; file++)
+				{
+					int index = rank * 8 + file;
+					Console.Write(Piece.getPieceSymbol(chessboard[index]));
+				}
+				Console.WriteLine();
+			}
 		}
+
 		
 
     }
