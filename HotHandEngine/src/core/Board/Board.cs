@@ -19,14 +19,13 @@ namespace Chess.Core
         //0-5: White Pawn, Knight, Bishop, Rook, Queen, King
         //6-11: Black Pawn, Knight, Bishop, Rook, Queen, King
         //Formula for accessing: (colorIndex * 6) + pieceTypeIndex
-        public ulong[] pieceBitBoards;
+        public ulong[] pieceBitBoards = new ulong[12];
 
 		//BitBoards for all pieces of each color. 
-		public ulong[] colorBitboards;
+		public ulong[] colorBitboards = new ulong[2];
 		public ulong allPiecesBitboard;
 
-
-		public isWhiteTurn;
+		public int isWhiteTurn = 1;
 
 
 		//Function definitions start here.
@@ -35,6 +34,20 @@ namespace Chess.Core
 		public Board()
 		{
 			chessboard = new int[64];
+			//Load up all the values to their defaults
+		}
+
+		//Updates the chessboard representation, and then updates the bitboards
+		public void parseFenToChessboard()
+		{
+
+			return;
+		}
+
+		public void updateBitboardsFromChessboard()
+		{
+
+			return;
 		}
 		
 

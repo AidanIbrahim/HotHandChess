@@ -18,6 +18,7 @@ public class UCIIntepreter
     //Interprets UCI commands and calls the engine's functions 
     public void readCommand(string message)
     {
+        writeToLog(message);
         message = message.Trim();
         string messageType = message.Split(' ')[0].ToLower();
 
@@ -25,6 +26,8 @@ public class UCIIntepreter
         switch (messageType)
         {
             case "uci":
+                writeToConsole("id name HotHandEngine");
+                writeToConsole("id author HotHandSystems");
                 writeToConsole("uciok");
                 break;
             case "isready":
@@ -37,7 +40,7 @@ public class UCIIntepreter
                 //IMPLEMENT ENGINE CLASS
                 break;
             case "go":
-                //IMPLEMENT ENGINE CLASS
+                writeToConsole("bestmove d7d5");
                 break;
             case "stop":
                 //IMPLEMENT ENGINE CLASS

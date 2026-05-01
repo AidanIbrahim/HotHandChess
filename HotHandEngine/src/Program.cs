@@ -8,12 +8,17 @@ namespace HotHandEngine
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, HotHand Systems!");
 
             UCIIntepreter engine = new();
             string command = String.Empty;
+
+            //While the command is not "quit" keep reading inputs
             while (command != "quit")
             {
+                if (command == null)
+                {
+                    break;
+                }
                 command = Console.ReadLine();
                 engine.readCommand(command);
             }

@@ -84,15 +84,19 @@ namespace Chess.Core
 
             //NONE is -1, and should match to the catch all case
 
-            return isBlack(pieceCode) ? char.ToLower(symbol) : symbol;
+            return isWhite(pieceCode) ?  symbol : char.ToLower(symbol);
 
         }
 
-        //Returns the color of a piece given the integer code, returns WHITE or BLACK, or NONE 
-        public static int isBlack(int pieceType)
+        //FIX OUTPUT OF THIS FUNCTION, NO INTO TO BOOL CASTING
+
+        //Returns a bool, true if a piece is white
+        //Does not input validate for NONE case. Should not be called on a pieceType with value NONE
+        public static bool isWhite(int pieceType)
         {
-            if (pieceType == NONE) return NONE;
-            return pieceType / NUM_PIECE_TYPES; //Int division will return 0 if the id is lower than 5, but 1 if it is higher than 6
+            int color = pieceType / NUM_PIECE_TYPES; //Int division will return 0 if the id is lower than 5, but 1 if it is higher than 6
+            if (color == WHITE) return true;
+            else return false;
         }
     }
 
