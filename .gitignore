@@ -1,7 +1,6 @@
 # Build results
 bin/
 obj/
-*logs/
 
 # Visual Studio cache
 .vs/
@@ -14,7 +13,7 @@ HotHandEngine/tools/
 *.suo
 
 # Logs
-*.log
+*.logs
 
 # NuGet
 packages/
