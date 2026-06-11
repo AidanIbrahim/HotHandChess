@@ -1,6 +1,7 @@
 # Build results
 bin/
 obj/
+*logs/
 
 # Visual Studio cache
 .vs/
