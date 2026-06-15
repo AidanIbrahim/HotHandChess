@@ -1,0 +1,26 @@
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: isready
+HotHandEngine: readyok
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: isready
+HotHandEngine: readyok
+GUI: ucinewgame
+GUI: position startpos
+GUI: position startpos moves e2e4
+GUI: isready
+HotHandEngine: readyok
+GUI: go wtime 300000 btime 300000 movestogo 40
+HotHandEngine: bestmove d7d5
+GUI: position startpos moves e2e4 d7d5 e4d5
+GUI: isready
+HotHandEngine: readyok
+GUI: go wtime 298784 btime 300000 movestogo 39
+HotHandEngine: bestmove d7d5
+GUI: isready
+HotHandEngine: readyok

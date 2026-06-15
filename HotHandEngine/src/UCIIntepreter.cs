@@ -19,7 +19,7 @@ public class UCIIntepreter
     //Interprets UCI commands and calls the engine's functions 
     public void readCommand(string message)
     {
-        writeToLog(message);
+        writeCommandToLog(message);
         message = message.Trim();
         string messageType = message.Split(' ')[0].ToLower();
 
@@ -36,6 +36,9 @@ public class UCIIntepreter
                 break;
             case "ucinewgame":
                 //IMPLEMENT ENGINE CLASS
+
+                //Call the newGame function from the engine class and then respond to console with "readyok"
+
                 break;
             case "position":
                 chessEngine.loadPosition(message);
@@ -49,6 +52,8 @@ public class UCIIntepreter
                 break;
             case "quit":
                 //IMPLEMENT ENGINE CLASS
+
+                //Likely needs to do nothing
                 break;
             case "d":
                 chessEngine.printPosition();
@@ -64,6 +69,11 @@ public class UCIIntepreter
     {
         Console.WriteLine(response);
         writeToLog($"{engineName}: {response}");
+    }
+
+    public void writeCommandToLog(string message)
+    {
+        writeToLog($"GUI: {message}");
     }
 
     //Writes text as a line in the log

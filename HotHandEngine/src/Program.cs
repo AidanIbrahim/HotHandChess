@@ -10,17 +10,18 @@ namespace HotHandEngine
         {
 
             UCIIntepreter engine = new();
-            string command = String.Empty;
+            string? command = String.Empty;
 
             //While the command is not "quit" keep reading inputs
-            while (command != "quit")
+            while ((command = Console.ReadLine()) != null)
             {
-                if (command == null)
-                {
+                if (command == "quit") {
                     break;
+                } else {
+                    engine.readCommand(command);
                 }
-                command = Console.ReadLine();
-                engine.readCommand(command);
+
+
             }
         }
     }

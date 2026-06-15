@@ -88,8 +88,6 @@ namespace Chess.Core
 
         }
 
-        //FIX OUTPUT OF THIS FUNCTION, NO INTO TO BOOL CASTING
-
         //Returns a bool, true if a piece is white
         //Does not input validate for NONE case. Should not be called on a pieceType with value NONE
         public static bool isWhite(int pieceType)
