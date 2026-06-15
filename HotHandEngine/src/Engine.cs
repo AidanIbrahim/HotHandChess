@@ -7,12 +7,12 @@ namespace HotHandEngine;
 
 public class Engine
 {
-	Board engineBoard = new Board();
+	Board engineBoard;
 
     public Engine()
 	{
-
-	}
+       engineBoard = new Board(); //Creates a new board 
+    }
 
 	//Clears out the board to start a new game
 	public void newGame()
@@ -23,15 +23,21 @@ public class Engine
 	//Loads a position from from a fen string, passes command details to the Board class
 	public void loadPosition(string command)
 	{
-
         engineBoard.parseFenToChessboard(command);
 		return;
 	}
 
-	public string makeMove()
+	//Searches for the best move and returns it
+	public string getMove(string command)
 	{
-		return "IMPLEMENT MAKE MOVE";
+		return "d7d5"; //DEBUG MOVE FOR TESTING, THIS WILL RETURN RESULTS FROM SEARCH
 	}
+
+	//Halts the search and returns the best move currently found
+	public string cancelSearch()
+	{
+        return "d7d5"; //DEBUG MOVE FOR TESTING, THIS WILL RETURN RESULTS FROM SEARCH
+    }
 
 	//Debug command to print the square position
 	public void printPosition()

@@ -35,8 +35,7 @@ public class UCIIntepreter
                 writeToConsole("readyok");
                 break;
             case "ucinewgame":
-                //IMPLEMENT ENGINE CLASS
-
+]
                 //Call the newGame function from the engine class and then respond to console with "readyok"
 
                 break;
@@ -45,15 +44,16 @@ public class UCIIntepreter
                 break;
             case "go":
                 writeToConsole("bestmove d7d5");
-                //HARDCODED AS A TEST - FIX LATER
+                
+                //Call the getMove function from engine.cs, take message as an arguement.
+                //Delete the writeToConsole line
+                //Call write to console and use the output of getMove as the arguement
+
                 break;
             case "stop":
-                //IMPLEMENT ENGINE CLASS
+                //Call the cancelSearch function in the engine class
                 break;
             case "quit":
-                //IMPLEMENT ENGINE CLASS
-
-                //Likely needs to do nothing
                 break;
             case "d":
                 chessEngine.printPosition();
