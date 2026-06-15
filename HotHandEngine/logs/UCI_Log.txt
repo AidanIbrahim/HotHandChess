@@ -1,0 +1,103 @@
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: ready
+Bad Command: ready
+GUI: ucinewgame
+GUI: position startpos
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position startpos
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position startpos
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position startpos
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position startpos
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position startpos
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position startpos
+GUI: d
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position startpos
+GUI: d
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position r1bqk2r/ppp2ppp/3b1n2/3Np3/2Pn4/1P1Q4/PB2PPPP/R3KBNR b KQkq - 0 8
+GUI: d
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position startpos
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position startpos
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position startpos
+GUI: d
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position startpos
+GUI: d
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position startpos
+GUI: d
+GUI: clear
+Bad Command: clear
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position startpos
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position startpos
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position startpos
+GUI: d
+GUI: uci
+HotHandEngine: id name HotHandEngine
+HotHandEngine: id author HotHandSystems
+HotHandEngine: uciok
+GUI: position r2qk2r/ppp2ppp/3b4/3Ppb2/3n4/1P1Q4/PB2PPPP/R3KBNR w KQkq - 1 10
+GUI: d

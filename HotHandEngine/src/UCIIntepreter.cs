@@ -35,7 +35,6 @@ public class UCIIntepreter
                 writeToConsole("readyok");
                 break;
             case "ucinewgame":
-]
                 //Call the newGame function from the engine class and then respond to console with "readyok"
 
                 break;
