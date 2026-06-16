@@ -56,6 +56,7 @@ public class UCIIntepreter
                 break;
             case "d":
                 chessEngine.printPosition();
+                chessEngine.printEngineBitBoards();
                 break;
             default:
                 writeToLog($"Bad Command: {messageType}");

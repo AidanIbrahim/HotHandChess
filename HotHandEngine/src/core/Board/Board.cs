@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
 
 //Credit to Sebastian Lague for inspiration and some of the code structure. His Repository: https://github.com/SebLague/Chess-Coding-Adventure/
 
@@ -95,29 +97,93 @@ namespace Chess.Core
 				}
 			
 			}
+			updateBitboardsFromChessboard(); //Update the corresponding piece bitboard
 		}
         //Updates the chessboard representation, and then updates the bitboards
 
-        public void updateBitboardsFromChessboard()
+		//Sets bit square in bitboard to 1
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static ulong setBit(ulong BitBoard, int square)
 		{
-
-			return;
+			return BitBoard | (1UL << square);
 		}
 
-		public void printDebug()
+		//Sets bit square in bitboard to 0
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static ulong clearBit(ulong BitBoard, int square)
+        {
+            return BitBoard & ~(1UL << square);
+        }
+
+
+        //Reads in the current board state to all bitboards
+        public void updateBitboardsFromChessboard()
+		{
+            Array.Clear(pieceBitBoards, 0, pieceBitBoards.Length);
+
+            for (int i = 0; i < BOARD_SIZE; i++)
+			{
+				if (chessboard[i] != -1)
+				{
+					pieceBitBoards[chessboard[i]] = setBit(pieceBitBoards[chessboard[i]], i);
+				}
+			}
+
+			colorBitboards[Piece.WHITE] = 0;
+			colorBitboards[Piece.BLACK] = 0;
+            for (int i = Piece.PIECE_INDEX_MIN; i < Piece.PIECE_INDEX_MAX; i++)
+            {
+				if (i < Piece.BLACK_PAWN)
+				{
+					colorBitboards[Piece.WHITE] |= pieceBitBoards[i];
+				} else
+				{
+                    colorBitboards[Piece.BLACK] |= pieceBitBoards[i];
+                }
+            }
+
+			allPiecesBitboard = colorBitboards[Piece.BLACK] | colorBitboards[Piece.WHITE];
+        }
+
+		//Update function that only updates the squares where a pieces moved, faster than the above function 
+        public void moveUpdateAllBoard(int moveFrom, int moveTo)
+		{
+
+		}
+
+		//print a square based representation to console, used for debugging
+        public void printDebug()
 		{
 			for (int rank = 7; rank >= 0; rank--)
 			{
 				for (int file = 0; file < 8; file++)
 				{
 					int index = rank * 8 + file;
-					Console.Write(Piece.getPieceSymbol(chessboard[index]));
+					Console.Write($"{Piece.getPieceSymbol(chessboard[index])} ");
 				}
 				Console.WriteLine();
 			}
 		}
 
-		
+		//Print a BitBoard to console, used for debugging
+        public void printBitboards(ulong bitboard)
+        {
+            for (int rank = 7; rank >= 0; rank--)
+            {
+                for (int file = 0; file < 8; file++)
+                {
+                    int square = rank * 8 + file;
+                    ulong mask = 1UL << square;
+
+                    Console.Write((bitboard & mask) != 0 ? "1 " : ". ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+        }
+
+
+
 
     }
 }

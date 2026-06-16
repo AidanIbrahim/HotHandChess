@@ -79,7 +79,7 @@ namespace Chess.Core
                 QUEEN => 'Q',
                 KING => 'K',
                 PAWN => 'P',
-                _ => '#'
+                _ => '.'
             };
 
             //NONE is -1, and should match to the catch all case

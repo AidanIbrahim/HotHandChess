@@ -47,4 +47,15 @@ public class Engine
         Console.WriteLine("------------------------");
 
     }
+
+    public void printEngineBitBoards()
+    {
+        for (int i = Piece.PIECE_INDEX_MIN; i <= Piece.PIECE_INDEX_MAX; i++)
+		{
+            Console.WriteLine($"BITBOARD: {Piece.getPieceSymbol(i)}");
+			engineBoard.printBitboards(engineBoard.pieceBitBoards[i]);
+            Console.WriteLine("------------------------");
+        }
+
+    }
 }
