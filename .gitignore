@@ -1,24 +1,61 @@
-# Build results
+##############################
+#   .NET / C# Build Output   #
+##############################
+
 bin/
 obj/
+out/
+publish/
+*.dll
+*.exe
+*.pdb
 
-# Visual Studio cache
+##############################
+#   Visual Studio / VSCode   #
+##############################
+
 .vs/
-
-#Hide these for now
-HotHandEngine/tools/
-
-# User-specific files
+.vscode/
 *.user
 *.suo
-
-# Logs
-*.logs
-
-# NuGet
-packages/
-*.nupkg
-
-# Others
 *.cache
 *.tmp
+
+##############################
+#   HotHandEngine Folders    #
+##############################
+
+HotHandEngine/logs/
+HotHandEngine/engines/
+HotHandEngine/tools/
+
+# Ignore nested versions too
+logs/
+engines/
+tools/
+
+##############################
+#   Logs                     #
+##############################
+
+*.log
+*.log.*
+*.txt~   # temp log backups
+
+##############################
+#   NuGet                    #
+##############################
+
+packages/
+*.nupkg
+*.snupkg
+
+##############################
+#   OS / Editor Junk         #
+##############################
+
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+*.swo

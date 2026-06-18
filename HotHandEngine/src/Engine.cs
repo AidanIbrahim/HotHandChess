@@ -2,7 +2,6 @@
 using System.Runtime.CompilerServices;
 using Chess.Core;
 
-
 namespace HotHandEngine;
 
 public class Engine

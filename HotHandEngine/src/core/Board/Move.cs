@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 
 //This struct hold the data for a move, This should be a 32 bit number with the following format
@@ -58,5 +54,4 @@ namespace Chess.Core
         public int extra => (int)((bitMove >> 27) & 0x1F);
     }
 
-}
 }
