@@ -10,34 +10,34 @@ namespace Chess.Core
 
     public static class Piece
     {
-        //Codes for the pieces. Used for indexing and other purposes.
-        public const int PAWN = 0;
-        public const int KNIGHT = 1;
-        public const int BISHOP = 2;
-        public const int ROOK = 3;
-        public const int QUEEN = 4;
-        public const int KING = 5;
-        public const int NONE = -1;
+        //Codes for the pieces. Used for indexing and other purposes
+        public const int NONE = 0;
+        public const int PAWN = 1;
+        public const int KNIGHT = 2;
+        public const int BISHOP = 3;
+        public const int ROOK = 4;
+        public const int QUEEN = 5;
+        public const int KING = 6;
 
         //Piece colors
         public const int WHITE = 0;
         public const int BLACK = 1;
 
-        public const int NUM_PIECE_TYPES= 6; // Number of pieces per color
+        public const int NUM_PIECE_TYPES = 6; // Number of pieces per color
 
-        public const int WHITE_PAWN = PAWN + WHITE * NUM_PIECE_TYPES;        // 0
-        public const int WHITE_KNIGHT = KNIGHT + WHITE * NUM_PIECE_TYPES;    // 1
-        public const int WHITE_BISHOP = BISHOP + WHITE * NUM_PIECE_TYPES;    // 2
-        public const int WHITE_ROOK = ROOK + WHITE * NUM_PIECE_TYPES;        // 3
-        public const int WHITE_QUEEN = QUEEN + WHITE * NUM_PIECE_TYPES;      // 4
-        public const int WHITE_KING = KING + WHITE * NUM_PIECE_TYPES;        // 5
+        public const int WHITE_PAWN = PAWN + WHITE * NUM_PIECE_TYPES;        // 1
+        public const int WHITE_KNIGHT = KNIGHT + WHITE * NUM_PIECE_TYPES;    // 2
+        public const int WHITE_BISHOP = BISHOP + WHITE * NUM_PIECE_TYPES;    // 3
+        public const int WHITE_ROOK = ROOK + WHITE * NUM_PIECE_TYPES;        // 4
+        public const int WHITE_QUEEN = QUEEN + WHITE * NUM_PIECE_TYPES;      // 5
+        public const int WHITE_KING = KING + WHITE * NUM_PIECE_TYPES;        // 6
 
-        public const int BLACK_PAWN = PAWN + BLACK * NUM_PIECE_TYPES;        // 6
-        public const int BLACK_KNIGHT = KNIGHT + BLACK * NUM_PIECE_TYPES;    // 7
-        public const int BLACK_BISHOP = BISHOP + BLACK * NUM_PIECE_TYPES;    // 8
-        public const int BLACK_ROOK = ROOK + BLACK * NUM_PIECE_TYPES;        // 9
-        public const int BLACK_QUEEN = QUEEN + BLACK * NUM_PIECE_TYPES;      // 10
-        public const int BLACK_KING = KING + BLACK * NUM_PIECE_TYPES;        // 11
+        public const int BLACK_PAWN = PAWN + BLACK * NUM_PIECE_TYPES;        // 7
+        public const int BLACK_KNIGHT = KNIGHT + BLACK * NUM_PIECE_TYPES;    // 8
+        public const int BLACK_BISHOP = BISHOP + BLACK * NUM_PIECE_TYPES;    // 9
+        public const int BLACK_ROOK = ROOK + BLACK * NUM_PIECE_TYPES;        // 10
+        public const int BLACK_QUEEN = QUEEN + BLACK * NUM_PIECE_TYPES;      // 11
+        public const int BLACK_KING = KING + BLACK * NUM_PIECE_TYPES;        // 12
 
         public const int PIECE_INDEX_MAX = BLACK_KING; // Used for iterating, should be set to the highest piece code.
         public const int PIECE_INDEX_MIN = WHITE_PAWN; // Used for iterating, should be set to the lowest piece code.

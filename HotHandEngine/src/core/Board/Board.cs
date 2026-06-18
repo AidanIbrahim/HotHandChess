@@ -145,11 +145,6 @@ namespace Chess.Core
 			allPiecesBitboard = colorBitboards[Piece.BLACK] | colorBitboards[Piece.WHITE];
         }
 
-		//Update function that only updates the squares where a pieces moved, faster than the above function 
-        public void moveUpdateAllBoard(int moveFrom, int moveTo)
-		{
-
-		}
 
 		//print a square based representation to console, used for debugging
         public void printDebug()
