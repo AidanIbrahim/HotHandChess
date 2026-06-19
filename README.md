@@ -16,12 +16,17 @@ If you're interested in how the engine works internally, the full system design 
 
 ## Current Status
 
-**Development Stage:** Early Development and Planning  
-**Current Version:** *0.01 — Testing coding environment, setting up GitHub repository, and establishing initial project structure.*
+**Development Stage:** Early Development 
+**Current Version:** *0.04 — Board Representation, and Basic UCI command parsing.*
 
 ---
 
-## System Design Document
+## Resources
 
-**Live System Design Document (Read‑Only):**  
+**Live System Design Document:**  
 https://1drv.ms/w/c/fe1cb25942aee20a/IQD4NhR4-B7WQ6yD3QnYOzF9AbHi8-95B8WZa3AjN521PpE?e=flzkNH
+**Project Changelog:**  
+https://hothandsystems.com/Pages/HotHandChessChangelog
+**HotHand Systems Website:**
+https://hothandsystems.com/
+
