@@ -25,8 +25,10 @@ If you're interested in how the engine works internally, the full system design 
 
 **Live System Design Document:**  
 https://1drv.ms/w/c/fe1cb25942aee20a/IQD4NhR4-B7WQ6yD3QnYOzF9AbHi8-95B8WZa3AjN521PpE?e=flzkNH
+
 **Project Changelog:**  
 https://hothandsystems.com/Pages/HotHandChessChangelog
+
 **HotHand Systems Website:**
 https://hothandsystems.com/
 
