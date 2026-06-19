@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 //Credit to Sebastian Lague for inspiration and some of the code structure. His Repository: https://github.com/SebLague/Chess-Coding-Adventure/
 
@@ -41,6 +42,7 @@ namespace Chess.Core
 
         public const int PIECE_INDEX_MAX = BLACK_KING; // Used for iterating, should be set to the highest piece code.
         public const int PIECE_INDEX_MIN = WHITE_PAWN; // Used for iterating, should be set to the lowest piece code.
+        public const int WHITE_PIECE_MAX = WHITE_KING;
 
         //Function definitions start here.
 
@@ -84,40 +86,16 @@ namespace Chess.Core
 
             //NONE is -1, and should match to the catch all case
 
-            return isWhite(pieceCode) ?  symbol : char.ToLower(symbol);
+            return isWhite(pieceCode) ? symbol : char.ToLower(symbol);
 
         }
 
         //Returns a bool, true if a piece is white
         //Does not input validate for NONE case. Should not be called on a pieceType with value NONE
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool isWhite(int pieceType)
         {
-            int color = pieceType / NUM_PIECE_TYPES; //Int division will return 0 if the id is lower than 5, but 1 if it is higher than 6
-            if (color == WHITE) return true;
-            else return false;
+            return (pieceType <= WHITE_PIECE_MAX);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

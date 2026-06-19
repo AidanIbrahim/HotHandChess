@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 
 
@@ -24,11 +26,10 @@ namespace Chess.Core
 		public int[] chessboard = new int[BOARD_SIZE];
 
 
-        //BitBoards for each piece of each color. Indexing is as follows:
-        //0-5: White Pawn, Knight, Bishop, Rook, Queen, King
-        //6-11: Black Pawn, Knight, Bishop, Rook, Queen, King
-        //Formula for accessing: (colorIndex * 6) + pieceTypeIndex
-        public ulong[] pieceBitBoards = new ulong[12];
+        //Bitboards for each piece of each color. Indexing is as follows:
+        //1-6: White Pawn, Knight, Bishop, Rook, Queen, King
+        //7-12: Black Pawn, Knight, Bishop, Rook, Queen, King
+        public ulong[] pieceBitboards = new ulong[12];
 
 		//BitBoards for all pieces of each color. 
 		public ulong[] colorBitboards = new ulong[2];
@@ -46,9 +47,9 @@ namespace Chess.Core
 			{
 				colorBitboards[board] = 0; //Initialize color bitboards
 			}
-			for (int board = 0; board < pieceBitBoards.Length; board++)
+			for (int board = 0; board < pieceBitboards.Length; board++)
 			{
-				pieceBitBoards[board] = 0; //Initialize piece bitboards
+				pieceBitboards[board] = 0; //Initialize piece bitboards
 			}
 			allPiecesBitboard = 0;
 		}
@@ -97,35 +98,118 @@ namespace Chess.Core
 				}
 			
 			}
-			updateBitboardsFromChessboard(); //Update the corresponding piece bitboard
+			reloadBitboardsFromChessboard(); //Update the corresponding piece bitboard
 		}
         //Updates the chessboard representation, and then updates the bitboards
 
 		//Sets bit square in bitboard to 1
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static ulong setBit(ulong BitBoard, int square)
+		public static ulong setBit(ulong Bitboard, int square)
 		{
-			return BitBoard | (1UL << square);
+			return Bitboard | (1UL << square);
 		}
 
 		//Sets bit square in bitboard to 0
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong clearBit(ulong BitBoard, int square)
+        public static ulong clearBit(ulong Bitboard, int square)
         {
-            return BitBoard & ~(1UL << square);
+            return Bitboard & ~(1UL << square);
         }
 
+		//Make Move Functions
+		public void makeMove(Move ChessMove)
+		{
+			//Branches based on move type
+			if (ChessMove.castle) { makeCastleMove(ChessMove); return; }
+            if (ChessMove.epFlag) { makeEnPassantMove(ChessMove); return; }
+            if (ChessMove.dblPawn) { makeDoublePawnMove(ChessMove); return; }
+
+			makeNormalMove(ChessMove);
+        }
+
+		public void makeNormalMove(Move ChessMove)
+		{
+            chessboard[ChessMove.toSquare] = ChessMove.movePiece; //Update Square based representation
+            chessboard[ChessMove.fromSquare] = Piece.NONE;
+
+            //Bitmasks for move from and both squares
+            ulong fromMask = 1UL << ChessMove.fromSquare;
+            ulong toMask = 1UL << ChessMove.toSquare;
+            ulong moveMask = fromMask | toMask;
+
+            //XOR flips both the to and from bits
+            pieceBitboards[ChessMove.movePiece] ^= moveMask;
+
+            //Update color bitboard for Mover
+            if (Piece.isWhite(ChessMove.movePiece))
+                colorBitboards[Piece.WHITE] ^= moveMask;
+            else
+                colorBitboards[Piece.BLACK] ^= moveMask;
+
+            //Handle Capture
+            if (ChessMove.capturedPiece != Piece.NONE)
+            {
+                pieceBitboards[ChessMove.capturedPiece] &= ~toMask; //Update Piece Board
+
+                if (Piece.isWhite(ChessMove.capturedPiece))
+                {
+                    colorBitboards[Piece.WHITE] &= ~toMask;
+                }
+                else
+                {
+                    colorBitboards[Piece.BLACK] &= ~toMask;
+                }
+            }
+
+            allPiecesBitboard = colorBitboards[Piece.WHITE] | colorBitboards[Piece.BLACK];
+
+        }
+
+		public void makeDoublePawnMove(Move ChessMove)
+		{
+
+		}
+
+		public void makePromoMove(Move ChessMove)
+		{
+
+		}
+
+		public void makeEnPassantMove(Move ChessMove)
+		{
+
+		}
+
+		public void makeCastleMove(Move ChessMove)
+		{
+
+		}
+
+        //Unmake Move Functions
+
+        public void unmakeNormalMove(Move ChessMove)
+		{
+            if (ChessMove.castle || ChessMove.dblPawn || ChessMove.epFlag || ChessMove.promoPiece != Piece.NONE)
+            {
+                //Special Move Cases
+            }
+            else
+            {
+                chessboard[ChessMove.fromSquare] = ChessMove.movePiece;
+                chessboard[ChessMove.toSquare] = ChessMove.capturedPiece;
+            }
+        }
 
         //Reads in the current board state to all bitboards
-        public void updateBitboardsFromChessboard()
+        public void reloadBitboardsFromChessboard()
 		{
-            Array.Clear(pieceBitBoards, 0, pieceBitBoards.Length);
+            Array.Clear(pieceBitboards, 0, pieceBitboards.Length);
 
             for (int i = 0; i < BOARD_SIZE; i++)
 			{
 				if (chessboard[i] != -1)
 				{
-					pieceBitBoards[chessboard[i]] = setBit(pieceBitBoards[chessboard[i]], i);
+					pieceBitboards[chessboard[i]] = setBit(pieceBitboards[chessboard[i]], i);
 				}
 			}
 
@@ -135,16 +219,15 @@ namespace Chess.Core
             {
 				if (i < Piece.BLACK_PAWN)
 				{
-					colorBitboards[Piece.WHITE] |= pieceBitBoards[i];
+					colorBitboards[Piece.WHITE] |= pieceBitboards[i];
 				} else
 				{
-                    colorBitboards[Piece.BLACK] |= pieceBitBoards[i];
+                    colorBitboards[Piece.BLACK] |= pieceBitboards[i];
                 }
             }
 
 			allPiecesBitboard = colorBitboards[Piece.BLACK] | colorBitboards[Piece.WHITE];
         }
-
 
 		//print a square based representation to console, used for debugging
         public void printDebug()
@@ -176,9 +259,5 @@ namespace Chess.Core
             }
             Console.WriteLine();
         }
-
-
-
-
     }
 }
