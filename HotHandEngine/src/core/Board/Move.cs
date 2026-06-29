@@ -24,11 +24,6 @@ namespace Chess.Core
     {
         public readonly uint bitMove; 
 
-        public Move(uint value)
-        {
-            bitMove = value;
-        }
-
         public Move(int fromSquare, int toSquare, int movePiece, int capturedPiece, int promoPiece, bool epFlag, bool castle, bool dblPawn, int extra = 0)
         {
             bitMove =

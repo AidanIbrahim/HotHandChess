@@ -10,6 +10,104 @@ using System.Runtime.CompilerServices;
 
 namespace Chess.Core
 {
+
+	public class GameState
+	{
+		public int colorToMove = Piece.WHITE;
+		public int enPassantSquare = -1; //-1 is NULL
+		uint castleRights = 0b1111; //W Kingside, W Queenside, B Kingside Side, B Queenside
+
+        //Hardcoded Castling Moves, pregenerate these in this class, then return them when queried for legal castles
+        public Move whiteKingsideMove = new Move(Square.E1, Square.G1, Piece.WHITE_KING, Piece.NONE, Piece.NONE, false, true, false, 0);
+        public Move whiteQueensideMove = new Move(Square.E1, Square.C1, Piece.WHITE_KING, Piece.NONE, Piece.NONE, false, true, false, 0);
+        public Move blackKingsideMove = new Move(Square.E8,Square.G8, Piece.BLACK_KING, Piece.NONE, Piece.NONE, false, true, false, 0);
+        public Move blackQueensideMove = new Move(Square.E8, Square.C8, Piece.BLACK_KING, Piece.NONE, Piece.NONE, false, true, false, 0);
+
+		public GameState(GameState other)
+		{
+			this.colorToMove = other.colorToMove;
+			this.enPassantSquare = other.enPassantSquare;
+			this.castleRights = other.castleRights;
+		}
+
+        public void resetCastleRights() //Sets all bits of castleRights to 1
+		{
+			castleRights = 0b1111;
+        }
+
+        public bool wKCastle => ((castleRights >> 0) & 1) != 0;
+        public bool wQCastle => ((castleRights >> 1) & 1) != 0;
+        public bool bKCastle => ((castleRights >> 2) & 1) != 0;
+        public bool bQCastle => ((castleRights >> 3) & 1) != 0;
+
+        public void setBitCastle(int bit)
+        {
+			castleRights |= (1U << bit);
+            return;
+        }
+        public void clearBitCastle(int bit)
+        {
+            castleRights &= ~(1U << bit);
+        }
+
+
+        public Move[] getCastleRights(int colorToGo) //Returns castling rights given a side. 
+		{
+
+            if (castleRights == 0) //Skip operation if no castles are allowed
+                return Array.Empty<Move>();
+
+            List<Move> legalCastles = new List<Move>();
+
+            if (colorToGo == Piece.WHITE) //White to go case
+			{
+				if (wKCastle && checkCastleLegality(whiteKingsideMove))
+				{
+                    legalCastles.Add(whiteKingsideMove);
+                }
+
+                if (wQCastle && checkCastleLegality(whiteQueensideMove))
+                {
+                    legalCastles.Add(whiteQueensideMove);
+                }
+
+            } else //Black to go case
+			{
+                if (bKCastle && checkCastleLegality(blackKingsideMove))
+                {
+                    legalCastles.Add(blackKingsideMove);
+                }
+
+                if (bQCastle && checkCastleLegality(blackQueensideMove))
+                {
+                    legalCastles.Add(blackQueensideMove);
+                }
+            }
+
+			return legalCastles.ToArray();
+		}
+
+		public bool checkCastleLegality(Move castleMove)
+		{
+			//Legality Logic Here, implement later
+			//A king cannot castle when in check, if either the rook or king has moved, the king is in check, or if castling takes the king through check.
+
+			return true;
+		}
+
+		public void flipToGo() //Switches colorToGo to the other color
+		{
+			if (colorToMove == Piece.WHITE)
+			{
+				colorToMove = Piece.BLACK;
+			} else
+			{
+				colorToMove = Piece.WHITE;
+			}
+		}
+
+	}
+
 	public class Board
 	{
 		//Chess Constants
